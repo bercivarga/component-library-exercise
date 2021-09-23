@@ -6,8 +6,8 @@ export const Button = styled.button`
   font-size: 16px;
   border: 2px solid transparent;
   box-sizing: border-box;
-  display: block;
   cursor: pointer;
+  margin-right: 16px;
 `
 
 export const PrimaryButton = styled(Button)`
