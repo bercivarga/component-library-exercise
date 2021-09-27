@@ -12,3 +12,15 @@ export const defaultTheme = {
     textOnDisabled: neutral[300],
     primaryFont
 }
+
+export const darkTheme = {
+    primaryColor: neutral[100],
+    primaryColorHover: neutral[200],
+    primaryColorActive: neutral[100],
+    textColorOnPrimary: blue[300],
+    textColor: blue[300],
+    textColorInverted: neutral[100],
+    disabled: neutral[400],
+    textOnDisabled: neutral[300],
+    primaryFont
+}

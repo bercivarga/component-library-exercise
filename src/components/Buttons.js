@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {defaultTheme, typeScale} from "../utils";
+import {typeScale} from "../utils";
 
 export const Button = styled.button`
   font-style: ${typeScale.paragraph};
@@ -13,53 +13,53 @@ export const Button = styled.button`
   transition: background-color .2s linear, color .2s linear;
   
   &:hover {
-    background-color: ${defaultTheme.primaryColorHover};
-    color: ${defaultTheme.textColorOnPrimary};
+    background-color: ${props => props.theme.primaryColorHover};
+    color: ${props => props.theme.textColorOnPrimary};
   }
   
   &:active {
-    background-color: ${defaultTheme.primaryColorActive};
-    border-color: ${defaultTheme.primaryColorActive};
-    color: ${defaultTheme.primaryColor};
+    background-color: ${props => props.theme.primaryColorActive};
+    border-color: ${props => props.theme.primaryColorActive};
+    color: ${props => props.theme.primaryColor};
   }
   
   &:focus {
-    outline: 3px solid ${defaultTheme.primaryColorHover}
+    outline: 3px solid ${props => props.theme.primaryColorHover}
     outline-offset: 2px;
   }
 `
 
 export const PrimaryButton = styled(Button)`
-  background-color: ${defaultTheme.primaryColor};
-  color: ${defaultTheme.textColorOnPrimary};
+  background-color: ${props => props.theme.primaryColor};
+  color: ${props => props.theme.textColorOnPrimary};
 
   &:disabled {
-    background-color: ${defaultTheme.disabled};
-    color: ${defaultTheme.textOnDisabled};
+    background-color: ${props => props.theme.disabled};
+    color: ${props => props.theme.textOnDisabled};
     cursor: not-allowed;
   }
 `
 
 export const SecondaryButton = styled(Button)`
   background: none;
-  color: ${defaultTheme.primaryColor};
-  border: 2px solid ${defaultTheme.primaryColor};
+  color: ${props => props.theme.primaryColor};
+  border: 2px solid ${props => props.theme.primaryColor};
 
   &:disabled {
     background-color: transparent;
-    border-color: ${defaultTheme.disabled};
-    color: ${defaultTheme.disabled};
+    border-color: ${props => props.theme.disabled};
+    color: ${props => props.theme.disabled};
     cursor: not-allowed;
   }
 `
 export const TertiaryButton = styled(Button)`
   background-color: transparent;
-  color: ${defaultTheme.primaryColor};
+  color: ${props => props.theme.primaryColor};
   border: 2px solid transparent;
 
   &:disabled {
     background: none;
-    color: ${defaultTheme.disabled};
+    color: ${props => props.theme.disabled};
     cursor: not-allowed;
   }
 `
