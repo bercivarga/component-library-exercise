@@ -23,6 +23,7 @@ function reducer(state, action) {
 const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [useDarkTheme, setUseDarkTheme] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -35,13 +36,14 @@ const App = () => {
                 height: '100vh',
                 width: '100%'
             }}>
+                <PrimaryButton onClick={() => setShowModal(true)}>Toggle modal</PrimaryButton>
                 <TertiaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>Change theme</TertiaryButton>
                 <PrimaryButton onClick={() => dispatch({type: 'INCREASE'})}>Increase</PrimaryButton>
                 <SecondaryButton onClick={() => dispatch({type: 'DECREASE'})}>Decrease</SecondaryButton>
                 <TertiaryButton onClick={() => dispatch({type: 'RESET'})}>Reset</TertiaryButton>
                 <h2 style={{color: useDarkTheme ? darkTheme.primaryColor : defaultTheme.primaryColor}}>{state.count}</h2>
             </div>
-            <SignUpModal />
+            <SignUpModal showModal={showModal} setShowModal={setShowModal} />
             <GlobalStyle/>
         </ThemeProvider>
     )

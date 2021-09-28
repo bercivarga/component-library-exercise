@@ -3,18 +3,7 @@ import styled from "styled-components";
 import {typeScale} from "../utils";
 import {PrimaryButton} from "./Buttons";
 import {CloseIcon} from "./Icons";
-
-const WrapperWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+import {useSpring, animated} from "react-spring";
 
 const ModalWrapper = styled.div`
   width: 800px;
@@ -29,6 +18,7 @@ const ModalWrapper = styled.div`
   position: relative;
   border-radius: 2px;
   background: ${props => props.theme.formElementBackground};
+  cursor: default;
 `
 
 const SignUpHeader = styled.h3`
@@ -52,17 +42,30 @@ const CloseModalBtn = styled.button`
   padding: 0;
 `
 
-export const SignUpModal = () => {
+export const SignUpModal = ({showModal, setShowModal}) => {
+    const animation = useSpring({
+        opacity: showModal ? 1 : 0,
+        transform: showModal ? `translateY(0)` : `translateY(-200%)`,
+        position: `absolute`,
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex'
+    });
+
     return (
-        <WrapperWrapper>
-            <ModalWrapper>
-                <SignUpHeader>Sign up</SignUpHeader>
-                <SignUpText>Sign up today to get access!</SignUpText>
-                <PrimaryButton>Sign up</PrimaryButton>
-                <CloseModalBtn aria-label="Close modal">
-                    <CloseIcon />
-                </CloseModalBtn>
-            </ModalWrapper>
-        </WrapperWrapper>
+            <animated.div style={animation}>
+                <ModalWrapper>
+                    <SignUpHeader>Sign up</SignUpHeader>
+                    <SignUpText>Sign up today to get access!</SignUpText>
+                    <PrimaryButton>Sign up</PrimaryButton>
+                    <CloseModalBtn aria-label="Close modal" onClick={() => setShowModal(false)}>
+                        <CloseIcon />
+                    </CloseModalBtn>
+                </ModalWrapper>
+            </animated.div>
     )
 }
