@@ -1,8 +1,9 @@
 import React, {useReducer, useState} from "react";
 import ReactDOM from 'react-dom';
-import {PrimaryButton, SecondaryButton, TertiaryButton} from "./components/Buttons";
+import {PrimaryButton, SecondaryButton, TertiaryButton} from "./components";
 import {GlobalStyle, darkTheme, defaultTheme} from "./utils";
 import {ThemeProvider} from "styled-components";
+import {SignUpModal} from "./components";
 
 const initialState = {count: 0};
 
@@ -40,6 +41,7 @@ const App = () => {
                 <TertiaryButton onClick={() => dispatch({type: 'RESET'})}>Reset</TertiaryButton>
                 <h2 style={{color: useDarkTheme ? darkTheme.primaryColor : defaultTheme.primaryColor}}>{state.count}</h2>
             </div>
+            <SignUpModal />
             <GlobalStyle/>
         </ThemeProvider>
     )
