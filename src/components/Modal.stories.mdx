@@ -1,0 +1,25 @@
+<!-- YourComponent.stories.mdx -->
+import { Meta, Story, Preview } from '@storybook/addon-docs';
+import {SignUpModal} from './Modal';
+import {action} from "@storybook/addon-actions"
+import {withKnobs, boolean} from "@storybook/addon-knobs";
+
+<Meta title="Design System|Modals" component={SignUpModal} />
+
+# Modals
+
+Modals are designed to be informatory excerpts for users and guidance to other parts of the website.
+
+## Usage
+
+Use modals in combination with CTAs and other user events.
+
+## Sign up modal
+
+The sign up modal is meant to be used when a user performs an action that is sensible to follow up by a sign-up CTA.
+
+<Preview withToolbar>
+  <Story name="Sign up modal">
+    <SignUpModal showModal={boolean("Show modal", true)} />
+  </Story>
+</Preview>
